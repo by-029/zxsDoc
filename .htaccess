@@ -1,0 +1,48 @@
+RewriteEngine On
+
+# 禁止访问敏感文件
+<FilesMatch "^(config|\.git|\.env|composer\.(json|lock)|package\.json|\.htaccess)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 禁止访问日志文件
+<FilesMatch "\.(log|sql)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 禁止访问备份文件
+<FilesMatch "\.(bak|backup|old|orig|save|swp|tmp)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 禁止访问隐藏文件（以.开头的文件，但排除.htaccess）
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 禁止访问 __pycache__ 目录
+RedirectMatch 403 __pycache__
+
+# 安全头部
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# 伪静态URL重写规则
+# 支持格式：/project-slug 或 /project-slug/chapter-slug
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/(admin|assets|img|uploads|libs|config|install|api)/
+RewriteRule ^([a-z0-9\-]+)/?([a-z0-9\-]+)?/?$ index.php?project=$1&chapter=$2 [QSA,L]
+
+# 其他请求转发到index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]

@@ -1,0 +1,19 @@
+# 禁止直接访问PHP文件（除了index.php和login.php）
+<FilesMatch "\.php$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+# 禁止访问敏感文件
+<FilesMatch "^(check_login|functions|\.htaccess)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 安全头部
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+

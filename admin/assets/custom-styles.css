@@ -1,0 +1,98 @@
+/* 自定义样式 - 排序序号输入框和空章节图标 */
+
+/* 排序序号输入框美化样式 */
+.order-input-wrapper {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    max-width: 150px;
+}
+
+input.order-input-field,
+.order-input-wrapper .order-input-field,
+.form-group .order-input-wrapper .order-input-field,
+.form-group input.order-input-field,
+input#orderInput.order-input-field {
+    width: 120px !important;
+    max-width: 120px !important;
+    padding: 10px 12px !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    border: 2px solid #e1e8ed !important;
+    border-style: solid !important;
+    border-color: #e1e8ed !important;
+    border-radius: 6px !important;
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%) !important;
+    background-color: #ffffff !important;
+    color: #2c3e50 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    -moz-appearance: textfield !important;
+    appearance: textfield !important;
+    display: inline-block !important;
+    margin: 0 !important;
+}
+
+input.order-input-field::-webkit-inner-spin-button,
+input.order-input-field::-webkit-outer-spin-button,
+.order-input-wrapper .order-input-field::-webkit-inner-spin-button,
+.order-input-wrapper .order-input-field::-webkit-outer-spin-button,
+.form-group .order-input-wrapper .order-input-field::-webkit-inner-spin-button,
+.form-group .order-input-wrapper .order-input-field::-webkit-outer-spin-button,
+.form-group input.order-input-field::-webkit-inner-spin-button,
+.form-group input.order-input-field::-webkit-outer-spin-button,
+input#orderInput.order-input-field::-webkit-inner-spin-button,
+input#orderInput.order-input-field::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
+
+input.order-input-field:hover,
+.order-input-wrapper .order-input-field:hover,
+.form-group .order-input-wrapper .order-input-field:hover,
+.form-group input.order-input-field:hover,
+input#orderInput.order-input-field:hover {
+    border-color: #3498db !important;
+    background: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(52, 152, 219, 0.15) !important;
+    transform: translateY(-1px) !important;
+}
+
+input.order-input-field:focus,
+.order-input-wrapper .order-input-field:focus,
+.form-group .order-input-wrapper .order-input-field:focus,
+.form-group input.order-input-field:focus,
+input#orderInput.order-input-field:focus {
+    outline: none !important;
+    border-color: #3498db !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 空章节图标样式 */
+.empty-chapter-icon {
+    margin-bottom: 20px;
+    opacity: 0.8;
+    animation: float 3s ease-in-out infinite;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.empty-chapter-icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
